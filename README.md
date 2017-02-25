@@ -2,7 +2,7 @@
 
 This GitHub repo will hold the CloudFormation infrastructure code for Cartel Project Zero.
 
-### Task:
+# Task:
 
 Implement CD pipeline on AWS with Zero Downtime deploy of a single http service.
 
@@ -24,10 +24,10 @@ Implement CD pipeline on AWS with Zero Downtime deploy of a single http service.
 
 * When deploying the service, the new version should be in a new environment, it cannot share processes with the old version.
 
-### Use case:
+## Use case:
 
 * When I push a change to git, event is triggered I want the new version of the service deployed within 1 minute and I can use it without any downtime for me even during deploy procedure.
 
-# Solution:
+## Solution:
 
 ECS Containers
