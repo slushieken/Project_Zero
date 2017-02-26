@@ -8,11 +8,10 @@ Description: >
 
         Private:
           Default routes to the NAT Gateways
-          highly available ECS cluster using an AutoScaling Group for deploy
-          ECS hosts distributed across multiple Availability Zones (as hosts for the containers)
+          Highly available ECS cluster using an AutoScaling Group for deploy
+          ECS hosts distributed across multiple Availability Zones (hosts for the containers)
 
           Application: it deploys a pair of example ECS services from containers published in Amazon EC2 Container Registry (Amazon ECR).
-
 
     Author: Kenneth Ish
 
@@ -54,7 +53,7 @@ Resources:
             TemplateURL: https://raw.githubusercontent.com/slushieken/Project_Zero/master/infrastructure/ecs-cluster.yaml
             Parameters:
                 EnvironmentName: !Ref AWS::StackName
-                InstanceType: t2.large
+                InstanceType: t2.micro
                 ClusterSize: 4
                 VPC: !GetAtt VPC.Outputs.VPC
                 SecurityGroup: !GetAtt SecurityGroups.Outputs.ECSHostSecurityGroup

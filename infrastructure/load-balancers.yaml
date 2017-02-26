@@ -1,7 +1,6 @@
 Description: >
-    This template deploys an Application Load Balancer that exposes our various ECS services.
-    We create them it a seperate nested template, so it can be referenced by all of the other nested templates.
-
+    This template deploys an Application Load Balancer.
+    
 Parameters:
 
     EnvironmentName:
@@ -27,9 +26,9 @@ Resources:
         Properties:
             Name: !Ref EnvironmentName
             Subnets: !Ref Subnets
-            SecurityGroups: 
+            SecurityGroups:
                 - !Ref SecurityGroup
-            Tags: 
+            Tags:
                 - Key: Name
                   Value: !Ref EnvironmentName
 
@@ -38,11 +37,11 @@ Resources:
         Properties:
             LoadBalancerArn: !Ref LoadBalancer
             Port: 80
-            Protocol: HTTP 
-            DefaultActions: 
+            Protocol: HTTP
+            DefaultActions:
                 - Type: forward
                   TargetGroupArn: !Ref DefaultTargetGroup
-    
+
     # We define a default target group here, as this is a mandatory Parameters
     # when creating an Application Load Balancer Listener. This is not used, instead
     # a target group is created per-service in each service template (../services/*)
@@ -53,7 +52,7 @@ Resources:
             VpcId: !Ref VPC
             Port: 80
             Protocol: HTTP
-           
+
 Outputs:
 
     LoadBalancer:
@@ -66,6 +65,4 @@ Outputs:
 
     Listener:
         Description: A reference to a port 80 listener
-        Value: !Ref LoadBalancerListener  
-
-    
+        Value: !Ref LoadBalancerListener
